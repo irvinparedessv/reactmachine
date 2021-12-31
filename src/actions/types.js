@@ -1,0 +1,12 @@
+export const FETCH_ARTICLE_DETAILS = "FETCH_ARTICLE_DETAILS";
+export const SET_ARTICLE_DETAILS = "SET_ARTICLE_DETAILS";
+export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+export const FETCH_PRODUCTS_DONE = 'FETCH_PRODUCTS_DONE';
+export const BUY_PRODUCT = 'BUY_PRODUCT';
+export const BUY_PRODUCT_DONE = 'BUY_PRODUCT_DONE';
+export const PRODUCT_DONE = 'PRODUCT_DONE';
+export const API = "API";
+export const API_START = "API_START";
+export const API_END = "API_END";
+export const ACCESS_DENIED = "ACCESS_DENIED";
+export const API_ERROR = "API_ERROR";
