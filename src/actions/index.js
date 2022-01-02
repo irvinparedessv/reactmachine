@@ -1,14 +1,7 @@
-import { SET_ARTICLE_DETAILS, API, FETCH_ARTICLE_DETAILS,	BUY_PRODUCT,
-	BUY_PRODUCT_DONE,FETCH_PRODUCTS,FETCH_PRODUCTS_DONE,PRODUCT_DONE } from "./types";
+import { SET_ARTICLE_DETAILS, API, ADD_PRODUCT_DONE,	BUY_PRODUCT,
+	BUY_DONE,FETCH_PRODUCTS,FETCH_PRODUCTS_DONE,PRODUCT_DONE,PRODUCT_PROCESS } from "./types";
 import axios from 'axios';
-export function fetchArticleDetails() {
-    return apiAction({
-      url: "https://vending-machine-test.vercel.app/api/products",
-      onSuccess: setArticleDetails,
-      onFailure: () => console.log("Error occured loading articles"),
-      label: FETCH_ARTICLE_DETAILS
-    });
-  }
+import { v4 as uuid } from 'uuid';
 
   export const fetchProducts = () => dispatch => {
 	dispatch({
@@ -23,42 +16,57 @@ export function fetchArticleDetails() {
 				payload: products
 			});
 		}, 1000);
-	});
+	})
+  .catch(products => {
+
+    alert("some error");
+  });
 };
 
-  export const buyProduct = id => (dispatch, getState) => {
+  export const buyProduct = (id,time) => (dispatch, getState) => {
+
 	dispatch({
 		type: BUY_PRODUCT,
 		payload: id
 	});
 
-	// emulate rest API to buy product and catch error as API isn't implemented
-	axios.put(`api/products/${id}`).catch(() => {
+
 		// Add some timeout to see loading
 		setTimeout(() => {
-
-			dispatch({
-				type: BUY_PRODUCT_DONE,
+      dispatch({
+				type: BUY_DONE,
 				payload: id
 			});
+
+
+			dispatch({
+				type: ADD_PRODUCT_DONE,
+				payload: {id:id,time:time}
+			});
 		}, 1000);
-	});
-};
-export const DoneProduct = id => (dispatch, getState) => {
-	dispatch({
-		type: PRODUCT_DONE,
-		payload: id
-	});
+
+
+  var i=0;
+  var refreshInterval=  setInterval(() => {
+     
+			dispatch({
+				type: PRODUCT_PROCESS,
+				payload:{id:id,time:time-i}
+			});
+
+if(i==time){
+      dispatch({
+				type: PRODUCT_DONE,
+				payload: id
+			});
+      clearInterval(refreshInterval);
+    }
+    i++;
+		}, 1000);
+
+
 };
 
-  function setArticleDetails(data) {
-    console.log(data);
-    return {
-      type: SET_ARTICLE_DETAILS,
-      payload: data
-    };
-  }
-  
   function apiAction({
     url = "",
     method = "GET",

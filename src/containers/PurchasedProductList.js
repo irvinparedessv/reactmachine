@@ -8,7 +8,7 @@ const ProductList = (
 	({ products }) => (
 		<section className="row">
 			{map(products, (product, index) => (
-				<div key={index} className="col-xs-12 text-center">
+				<div key={index} className="col-xs-12 text-center mt-2 mb-2">
 					<PurchasedProductListItem product={product} />
 				</div>
 			))}
@@ -18,12 +18,13 @@ const ProductList = (
 
 ProductList.propTypes = {
 	products: PropTypes.arrayOf(PropTypes.shape({
-		id: PropTypes.number.isRequired
+		id: PropTypes.string.isRequired,
+		preparation_time: PropTypes.number.isRequired,
 	}).isRequired)
 };
 
 const mapStateToProps = state => ({
-	products: state.purchasedProducts.map(id => state.products.data[id])
+	products: state.purchasedProducts.map(item => state.products.data[item.id])
 });
 
 const mapDispatchToProps = () => ({

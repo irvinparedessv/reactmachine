@@ -1,8 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 const mystyle = {
-	maxWidth: "10rem",
-    maxHeight: "10rem"
+	maxWidth: "7rem",
+    maxHeight: "8rem"
    // CSS CODE
    };
 const PurchasedProductListItem = (
@@ -11,16 +11,19 @@ const PurchasedProductListItem = (
 			<div className="panel-body">
 				<img src={product.thumbnail} className="img-rounded img-responsive center-block" style={mystyle} />
 				<br></br>
-				<label>Tiempo 2 seg</label>
+				<label>En Proceso....</label>
 			</div>
 		</div>
 	)
 );
 
 PurchasedProductListItem.propTypes = {
-	product: PropTypes.shape({
+	product:  PropTypes.shape({
+		id: PropTypes.string.isRequired,
+		name: PropTypes.string.isRequired,
+		preparation_time: PropTypes.number.isRequired,
 		thumbnail: PropTypes.string.isRequired
-	}).isRequired
+	}).isRequired,
 };
 
 export default PurchasedProductListItem;

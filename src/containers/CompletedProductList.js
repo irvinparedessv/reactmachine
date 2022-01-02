@@ -8,7 +8,7 @@ const ProductList = (
 	({ products }) => (
 		<section className="row">
 			{map(products, (product, index) => (
-				<div key={index} className="col-xs-12 text-center">
+				<div key={index} className="col-xs-12 text-center mt-2 mb-2">
 					<CompletedProductListItem product={product} />
 				</div>
 			))}

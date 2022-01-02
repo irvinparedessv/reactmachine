@@ -1,8 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 const mystyle = {
-	maxWidth: "10rem",
-    maxHeight: "10rem"
+	maxWidth: "7rem",
+    maxHeight: "8rem",
+	minHeight: "8rem"
    // CSS CODE
    };
 const CompletedProductListItem = (

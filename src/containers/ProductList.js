@@ -12,7 +12,7 @@ const ProductList = (
 				products.loading ?
 				'Loading products...' :
 				map(products.data, product => (
-					<div key={product.id} className="col-sm-6 col-md-4 col-lg-3 text-center">
+					<div key={product.id} className="col-sm-6 col-md-4 col-lg-4 text-center divcard">
 						<ProductListItem product={product}  onClick={onProductClick} />
 					</div>
 				))
@@ -34,7 +34,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	onProductClick: id =>  dispatch(buyProduct(id))
+	onProductClick: (id,preparation_time) =>  dispatch(buyProduct(id,preparation_time))
 });
 
 export default connect(

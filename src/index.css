@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.labelname{
+  min-height: 4rem;
+}
+.divcard{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
