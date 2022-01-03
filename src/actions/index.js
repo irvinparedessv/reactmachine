@@ -22,15 +22,15 @@ import { v4 as uuid } from 'uuid';
     alert("some error");
   });
 };
-
+//function buy
   export const buyProduct = (id,time) => (dispatch, getState) => {
-
+//SIMULANDO LA COMPRA CON LOADING
 	dispatch({
 		type: BUY_PRODUCT,
 		payload: id
 	});
 
-
+//LUEGO DE UN SEGUNDO QUITAMOS EL LOADING Y PROCESAMOS LA COMPRA DEL PRODUCTO
 		// Add some timeout to see loading
 		setTimeout(() => {
       dispatch({
@@ -38,7 +38,7 @@ import { v4 as uuid } from 'uuid';
 				payload: id
 			});
 
-
+//AGREGAMOS A LA LISTA DE PREPARACION
 			dispatch({
 				type: ADD_PRODUCT_DONE,
 				payload: {id:id,time:time}
@@ -47,6 +47,7 @@ import { v4 as uuid } from 'uuid';
 
 
   var i=0;
+  //PONEMOS UN INTERVALO HASTA LLEGAR AL TIEMPO  DE PREPARACION DEL PRODUCTO AL CUAL LE IREMOS  QUITANDO UN SEGUNDO EN CADA DISPATCH
   var refreshInterval=  setInterval(() => {
      
 			dispatch({
@@ -55,6 +56,7 @@ import { v4 as uuid } from 'uuid';
 			});
 
 if(i==time){
+  //AL LLEGAR AL TIEMPO CERRAMOS EL INTERVAL Y PASAMOS A PRODUCTOS REALIZADOS EL NUEVO PRODUCTO
       dispatch({
 				type: PRODUCT_DONE,
 				payload: id

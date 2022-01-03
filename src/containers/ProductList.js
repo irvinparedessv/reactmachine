@@ -10,7 +10,7 @@ const ProductList = (
 		<section className="row">
 			{
 				products.loading ?
-				'Loading products...' :
+				<div className='loadingproducts'><label>Cargando  productos...</label></div> :
 				map(products.data, product => (
 					<div key={product.id} className="col-sm-6 col-md-4 col-lg-4 text-center divcard">
 						<ProductListItem product={product}  onClick={onProductClick} />

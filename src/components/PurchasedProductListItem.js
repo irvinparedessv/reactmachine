@@ -11,7 +11,11 @@ const PurchasedProductListItem = (
 			<div className="panel-body">
 				<img src={product.thumbnail} className="img-rounded img-responsive center-block" style={mystyle} />
 				<br></br>
-				<label>En Proceso....</label>
+				
+				<div class="loader">
+ 
+  <div class="loader-text"></div>
+</div>
 			</div>
 		</div>
 	)

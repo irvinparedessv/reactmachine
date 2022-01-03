@@ -3,7 +3,9 @@ import { PropTypes } from 'prop-types';
 const mystyle = {
 	maxWidth: "7rem",
     maxHeight: "8rem",
-	minHeight: "8rem"
+	minHeight: "8rem",
+	marginBottom: "5%"
+
    // CSS CODE
    };
 const ProductListItem = (
@@ -14,6 +16,9 @@ const ProductListItem = (
 			</div>
 			<div className="panel-body">
 				<img src={product.thumbnail} className="img-rounded img-responsive center-block" style={mystyle} />
+			</div>
+			<div className="panel-heading">
+				<strong>{product.preparation_time} seg.</strong>
 			</div>
 			<div className="panel-footer">
 				{
